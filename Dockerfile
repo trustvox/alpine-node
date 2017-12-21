@@ -1,9 +1,12 @@
-FROM node:7-alpine
+FROM node:8-alpine
 
 LABEL Trustvox Development Team "https://github.com/trustvox"
 
 RUN \
-  apk add --no-cache --virtual .build-deps python chromium \
+  echo -n "" > /etc/apk/repositories \
+  && echo "http://dl-cdn.alpinelinux.org/alpine/v3.7/community" >> /etc/apk/repositories \
+  && echo "http://dl-cdn.alpinelinux.org/alpine/v3.7/main" >> /etc/apk/repositories \
+  && apk add --update --no-cache --virtual .build-deps git chromium>63 \
   && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /tmp/* /var/cache/apk/* \
             /root/.npm /root/.node-gyp /root/.gnupg \
             /usr/lib/node_modules/npm/man \
@@ -12,3 +15,4 @@ RUN \
             /usr/lib/node_modules/npm/scripts
 
 ENV CHROME_BIN /usr/bin/chromium-browser
+ENV LIGHTHOUSE_CHROMIUM_PATH /usr/bin/chromium-browser
