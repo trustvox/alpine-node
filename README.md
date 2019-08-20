@@ -21,3 +21,4 @@ Dockerized chromium inside node alpine image
 - node:12-alpine
 - chromium (from apk)
 - git
+- bc
