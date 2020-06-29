@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:14.4-alpine3.12
 
 LABEL Trustvox Development Team "https://github.com/trustvox"
 
